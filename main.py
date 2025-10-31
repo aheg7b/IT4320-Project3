@@ -39,5 +39,17 @@ def Open_Browser(input):
     #opens the browser to view the chart
 
 def main():
-    return 0
-    #calls everything as needed, is the main function
+    print("**********Stock Data Chart Gen.**********")
+    Stock_Name = input("Enter teh stock symbol: ")
+    if not Stock_Name_Check(Stock_Name):
+        print("Invalid stock symbol, please try again: ")
+        return
+    print("\nChart Type:")
+    print("1. Line Chart")
+    print("2. Bar Chart")
+    chart_type=input("Chart Tipe? (1 or 2) ")
+    if not Chart_Type(chart_type):
+        print("Invalid input. Please try again ")
+        return
+    
+
