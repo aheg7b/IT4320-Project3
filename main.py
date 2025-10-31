@@ -44,6 +44,7 @@ def main():
     if not Stock_Name_Check(Stock_Name):
         print("Invalid stock symbol, please try again: ")
         return
+    
     print("\nChart Type:")
     print("1. Line Chart")
     print("2. Bar Chart")
@@ -52,4 +53,11 @@ def main():
         print("Invalid input. Please try again ")
         return
     
-
+    print("\nTime Series Options:")
+    print("1. TIME_SERIES_DAILY")
+    print("2. TIME_SERIES_WEEKLY")
+    print("3. TIME_SERIES_MONTHLY")
+    time_tipe=input("Time Tipe? (1,2,or3) ")
+    if not Time_Series(time_tipe)
+        print("Invalid input. Please try again ")
+        return
