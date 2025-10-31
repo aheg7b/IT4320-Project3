@@ -37,3 +37,7 @@ def Graph(input):
 def Open_Browser(input):
     return 0
     #opens the browser to view the chart
+
+def main():
+    return 0
+    #calls everything as needed, is the main function
