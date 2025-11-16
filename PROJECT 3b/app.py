@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 
 API_KEY = "Y1VTX9XT399MJE42"
-BASE_URL = "https://www.alphavantage.co/query"
+AV_BASE = "https://www.alphavantage.co/query"
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 
