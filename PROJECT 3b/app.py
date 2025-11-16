@@ -73,8 +73,22 @@ def index():
                            error=error,
                            selected_symbol=selected_symbol)
 @app.route("/search_symbols")
+
+
 def search_symbols():
-    return
+    q = request.args.get("q", "").strip()
+    if not q:
+        return jsonify([{"symbol": m["1. symbol"], "name": m["2. name"]} for m in FALLBACK_SYMBOLS])
+    try:
+        matches = alphavantage_symbol_search(q)
+        results = []
+        for m in matches:
+            results.append({"symbol": m.get("1. symbol"), "name": m.get("2. name")})
+        if not results:
+            results = [{"symbol": m["1. symbol"], "name": m["2. name"]} for m in FALLBACK_SYMBOLS]
+        return jsonify(results)
+    except Exception as e:
+        return jsonify([{"symbol": m["1. symbol"], "name": m["2. name"]} for m in FALLBACK_SYMBOLS]), 200
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
