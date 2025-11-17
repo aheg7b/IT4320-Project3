@@ -34,17 +34,19 @@ def alphavantage_symbol_search(keywords):
     matches = data.get("bestMatches") or []
     return matches
 
-
 def alphavantage_daily_series(symbol, outputsize="compact"):
-    #calls the Alpha Vantage TIME_SERIES_DAILY_ADJUSTED API to download historical stock price data for the symbol the user selected.
-    #It returns:
-    #Open price
-    #Close price
-    #High
-    #Low
-    #Volume
-    #Adjusted close
-    return
+    """Call Alpha Vantage TIME_SERIES_DAILY_ADJUSTED"""
+    if not API_KEY:
+        raise RuntimeError("ALPHAVANTAGE_API_KEY not set")
+    params = {
+        "function": "TIME_SERIES_DAILY_ADJUSTED",
+        "symbol": symbol,
+        "outputsize": outputsize,
+        "apikey": API_KEY
+    }
+    r = requests.get(AV_BASE, params=params, timeout=30)
+    r.raise_for_status()
+    return r.json()
 
 def index():
     chart_url = None
