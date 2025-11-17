@@ -20,8 +20,20 @@ AV_BASE = "https://www.alphavantage.co/query"
 app = Flask(__name__, static_folder="static", template_folder="templates")
 
 def alphavantage_symbol_search(keywords):
-    #This function sends a request to the Alpha Vantage SYMBOL_SEARCH API to look up stock symbols based on user input.
-    return
+    """Call Alpha Vantage SYMBOL_SEARCH. Returns list of matches or raises."""
+    if not API_KEY:
+        raise RuntimeError("ALPHAVANTAGE_API_KEY not set")
+    params = {
+        "function": "SYMBOL_SEARCH",
+        "keywords": keywords,
+        "apikey": API_KEY
+    }
+    r = requests.get(AV_BASE, params=params, timeout=20)
+    r.raise_for_status()
+    data = r.json()
+    matches = data.get("bestMatches") or []
+    return matches
+
 
 def alphavantage_daily_series(symbol, outputsize="compact"):
     #calls the Alpha Vantage TIME_SERIES_DAILY_ADJUSTED API to download historical stock price data for the symbol the user selected.
