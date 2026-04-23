@@ -1,0 +1,26 @@
+{
+  "version": "2.6.0",
+  "summary": {
+    "title": "Online Bank Threat Model",
+    "owner": "Backlight",
+    "description": "A financial institution that is developing a new online banking application. Our focus will revolve around modelling threats and vulnerabilities for this online banking application.",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "e-bank",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.6.0",
+        "cells": []
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "Cybersecurity Architect",
+    "threatTop": 0
+  }
+}
